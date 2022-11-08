@@ -45,12 +45,11 @@ function scene:create( event )
 
     function tapListener(event) 
         file.printData(data, 'json')
-        print(event.target.text)
+        print(event.target[2].text)
     end
 
     function makeCircle(x, y, radius, c1, c2, c3, text, weight, disp, mileage)
         local circleGroup = display.newGroup();
-
         local randomX = 50+ math.random() * 500
         local randomY = math.random() * 1000 
         local myCircle = display.newCircle( randomX, randomY, radius, 0.6 )
@@ -59,19 +58,10 @@ function scene:create( event )
         myCircle:setStrokeColor( 1, 1, 1 )
         local t2 = display.newText( text, randomX, randomY, native.systemFont, 24 )
         t2:setFillColor( 1, 0, 1 )
-        t2:addEventListener( "tap", tapListener )
-        -- circleGroup.insert({
-        --     disp = disp
-        -- })
-        -- circleGroup.insert(disp)
-        -- circleGroup.insert(mileage)
-        -- circleGroup:insert(t2)
-        -- circleGroup:insert(myCircle)
-        circleGroup:insert(t2)
         circleGroup:insert(myCircle)
-        --group:insert(myCircle)
+        circleGroup:insert(t2)
+        circleGroup:addEventListener( "tap", tapListener )
         group:insert(circleGroup)
-        --group:insert(circleGroup)
     end
  
     function map (value, istart, istop, ostart, ostop) 
