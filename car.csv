@@ -1,0 +1,51 @@
+Car,Weight,Disp,Mileage,Type
+Nissan Stanza 4,2920,146,21,Compact
+Mitsubishi Sigma V6,3110,181,21,Compact
+Subaru Legacy 4,2935,135,23,Compact
+Volvo 240 4,2985,141,23,Compact
+Buick Skylark 4,2640,151,23,Compact
+Oldsmobile Calais 4,2645,151,23,Compact
+Peugeot 405 4,2575,116,24,Compact
+Mazda 626 4,2780,133,24,Compact
+Ford Tempo 4,2750,141,24,Compact
+Mitsubishi Galant 4,2745,122,25,Compact
+Chrysler Le Baron V6,3065,181,25,Compact
+Honda Accord 4,2920,132,26,Compact
+Chevrolet Beretta 4,2655,133,26,Compact
+Audi 80 4,2670,121,27,Compact
+Toyota Camry 4,2920,122,27,Compact
+Acura Legend V6,3265,163,20,Medium
+Oldsmobile Cutlass Ciera 4,2765,151,21,Medium
+Buick Century 4,2880,151,21,Medium
+Mazda 929 V6,3480,180,21,Medium
+Oldsmobile Cutlass Supreme V6,3220,189,21,Medium
+Chrysler Le Baron Coupe,2975,153,22,Medium
+Eagle Premier V6,3145,180,22,Medium
+Nissan Maxima V6,3200,180,22,Medium
+Ford Taurus V6,3190,182,22,Medium
+Chrysler New Yorker V6,3450,202,22,Medium
+Hyundai Sonata 4,2885,143,23,Medium
+Toyota Cressida 6,3480,180,23,Medium
+Ford Thunderbird V6,3610,232,23,Medium
+Subaru Loyale 4,2295,109,25,Small
+Mercury Tracer 4,2285,97,26,Small
+Volkswagen Jetta 4,2330,109,26,Small
+Pontiac LeMans 4,2350,98,28,Small
+Toyota Corolla 4,2390,97,29,Small
+Honda Civic 4,2260,91,32,Small
+Mazda Protege 4,2440,113,32,Small
+Nissan Sentra 4,2275,97,33,Small
+Eagle Summit 4,2560,97,33,Small
+Ford Escort 4,2345,114,33,Small
+Subaru Justy 3,1900,73,34,Small
+Toyota Tercel 4,2075,89,35,Small
+Ford Festiva 4,1845,81,37,Small
+Ford Mustang V8,3310,302,19,Sporty
+Chevrolet Camaro V8,3320,305,20,Sporty
+Nissan 240SX 4,2775,146,24,Sporty
+Plymouth Laser,2840,107,26,Sporty
+Honda Prelude Si 4WS 4,2710,125,27,Sporty
+Dodge Daytona,2885,153,27,Sporty
+Subaru XT 4,2485,109,28,Sporty
+Ford Probe,2695,133,30,Sporty
+Honda Civic CRX Si 4,2170,97,33,Sporty
