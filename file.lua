@@ -56,15 +56,22 @@ function readCSV(fileName)
     return f
 end
 
-function getMaxMin(fileName)
-    -- local maxMileage, minMileage;
-    -- local maxWeight, minWeight;
-    -- local maxDisp, minDisp;
-    -- local path = system.pathForFile(fileName)
-    -- local f = csv.open(path,{separator = ",", header = false})
-    -- for fields in f:lines() do
-    --     for i, v in ipairs(fields) do print(i, v) end
-    -- end
+function getFields(fileName, carName)
+    --Car,Weight,Disp,Mileage,Type
+    local path = system.pathForFile(fileName)
+    local f = csv.open(path,{separator = ",", header = false})
+    local weight, disp, mileage
+    local t = {}
+    print(carName)
+    for fields in f:lines() do
+        print(fields[1])
+        if(fields[1] == carName) then
+            t.weight = fields[2];
+            t.disp = fields[3];
+            t.mileage = fields[4]
+        end
+    end
+    return t
 end
 
 function writeCSV(f, filename)
@@ -95,5 +102,5 @@ return {
     printData = printData,
     printCSV = printCSV,
     writeCSV = writeCSV,
-    getMaxMin = getMaxMin
+    getFields = getFields
 }

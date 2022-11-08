@@ -13,7 +13,7 @@ local scene = composer.newScene()
 local xRef = 150
 local yRef = 200
 
-local weight = false
+local weight = true
 local disp = false
 local mileage = false
 
@@ -34,12 +34,31 @@ function scene:create( event )
         });
     end
 
+    function buttonListener(event) 
+        composer.gotoScene("scene2", {
+            effect = "slideUp",
+            time = 100,
+            params = {
+                weight = weight;
+                disp = disp;
+                mileage = mileage;
+            } 
+        });
+    end
+
+    local button1 = display.newRect( 500, 50, 100, 50 )
+    button1.strokeWidth = 3
+    button1:setFillColor( 1,1,1 )
+    button1:setStrokeColor( 1, 0, 0 )
+    button1:addEventListener( "tap", buttonListener )
+    sceneGroup:insert(button1)
+
    local function onSwitchPressWeight( event )
         weight = event.target.isOn
         disp = false
         mileage = false
 
-        next();
+        --next();
     end
    local weightButton = widget.newSwitch(
         {
@@ -47,7 +66,7 @@ function scene:create( event )
             top = yRef + 50,
             style = "radio",
             id = "RadioButton1",
-            initialSwitchState = false,
+            initialSwitchState = true,
             onPress = onSwitchPressWeight
         }
     )
@@ -60,7 +79,7 @@ function scene:create( event )
         disp = event.target.isOn
         weight = false
         mileage = false
-        next();
+        -- next();
     end
    local dispButton = widget.newSwitch(
         {
@@ -81,7 +100,7 @@ function scene:create( event )
         mileage = event.target.isOn
         weight = false
         disp = false
-        next();
+        --next();
     end
    local MileageButton = widget.newSwitch(
         {

@@ -16,47 +16,89 @@ local group = display.newGroup()
 local weight = false
 local disp = false
 local mileage = false
+local tempGroup = display.newGroup()
 local data
+local prevRef
+local prevColor
 
 function scene:create( event )
      
     local sceneGroup = self.view
 
-    local function handleButtonEvent( event )
-        if ( "ended" == event.phase ) then
-            composer.gotoScene("scene1", {
-                effect = "slideUp",
-                time = 100,
-            });
-        end
+    -- local function handleButtonEvent( event )
+    --     if ( "ended" == event.phase ) then
+    --         composer.gotoScene("scene1", {
+    --             effect = "slideUp",
+    --             time = 100,
+    --         });
+    --     end
+    -- end
+    -- local button1 = widget.newButton(
+    --     {
+    --         left = 500,
+    --         top = 0,
+    --         id = "button1",
+    --         label = "Default",
+    --         onEvent = handleButtonEvent,
+    --         width = 10,
+    --         height = 10
+    --     }
+    -- )
+
+    function buttonListener(event) 
+        composer.gotoScene("scene1", {
+            effect = "slideUp",
+            time = 100,
+        });
     end
-    local button1 = widget.newButton(
-        {
-            left = 500,
-            top = 0,
-            id = "button1",
-            label = "Default",
-            onEvent = handleButtonEvent,
-            width = 10,
-            height = 10
-        }
-    )
+
+    local button1 = display.newRect( 500, 50, 100, 50 )
+    button1.strokeWidth = 3
+    button1:setFillColor( 1,1,1 )
+    button1:setStrokeColor( 1, 0, 0 )
+    button1:addEventListener( "tap", buttonListener )
     sceneGroup:insert(button1)
 
     function tapListener(event) 
-        file.printData(data, 'json')
-        print(event.target[2].text)
+
+        if(prevRef ~= nil) then
+            prevRef:setStrokeColor(1,1,1)
+        end
+        
+        prevRef = event.target[1]
+        event.target[1]:setStrokeColor( 1, 0, 0 )
+
+        local hdu = file.getFields("car.csv", event.target[2].text)
+        
+        local text1 = "Weight: " .. hdu["weight"]
+        local text2 = "Disp: " .. hdu["disp"]
+        local text3 = "Mileage: " .. hdu["mileage"]
+
+        display.remove(tempGroup)
+        tempGroup = display.newGroup()
+        
+        local yRef = 10
+        local t2 = display.newText( text1, 150, yRef, native.systemFont, 20 )
+        t2:setFillColor( 1, 1, 1 )
+        local t3 = display.newText( text2, 300, yRef, native.systemFont, 20 )
+        t2:setFillColor( 1, 1, 1 )
+        local t4 = display.newText( text3, 450, yRef, native.systemFont, 20 )
+        t2:setFillColor( 1, 1, 1 )
+
+        tempGroup:insert(t2)
+        tempGroup:insert(t3)
+        tempGroup:insert(t4)
     end
 
     function makeCircle(x, y, radius, c1, c2, c3, text, weight, disp, mileage)
         local circleGroup = display.newGroup();
-        local randomX = 50+ math.random() * 500
-        local randomY = math.random() * 1000 
+        local randomX = 50 + math.random() * 500
+        local randomY = 100 + math.random() * 800 
         local myCircle = display.newCircle( randomX, randomY, radius, 0.6 )
         myCircle:setFillColor( c1, c2, c3 )
         myCircle.strokeWidth = 5
         myCircle:setStrokeColor( 1, 1, 1 )
-        local t2 = display.newText( text, randomX, randomY, native.systemFont, 24 )
+        local t2 = display.newText( text, randomX, randomY, native.systemFont, 18 )
         t2:setFillColor( 1, 0, 1 )
         circleGroup:insert(myCircle)
         circleGroup:insert(t2)
@@ -178,6 +220,8 @@ function scene:hide( event )
  
    if ( phase == "will" ) then
         display.remove(group)
+        display.remove(tempGroup)
+        prevRef = nil
       -- Called when the scene is on screen (but is about to go off screen).
       -- Insert code here to "pause" the scene.
       -- Example: stop timers, stop animation, stop audio, etc.
